@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
       <div>
         <header>
-          <Link to = "/">amazona</Link>
+          <Link to="/">amazona</Link>
         </header>
         <Routes>
           <Route path="/" element={<HomeScreen />} />
