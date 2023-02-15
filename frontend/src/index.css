@@ -43,6 +43,11 @@ max-width: 400px;
 padding: 1rem;
 }
 
+.rating span{
+  color: #ffc000;
+}
+
+
 /* for loading animation when data fatched from server */
 .classic-7 {
   font-weight: bold;
