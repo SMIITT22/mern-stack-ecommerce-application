@@ -47,6 +47,10 @@ padding: 1rem;
   color: #ffc000;
 }
 
+.img-large{
+  max-width: 100%; 
+}
+
 
 /* for loading animation when data fatched from server */
 .classic-7 {

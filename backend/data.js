@@ -48,6 +48,18 @@ const data = {
       numReviews: 10,
       description: 'high quality product',
     },
+    {
+      name: "Adidas Running Shoes",
+      slug: "adidas-running-shoes",
+      category: "Shoes",
+      image: "/images/p5.jpg", 
+      price: 80,
+      countInStock: 5,
+      brand: "Adidas",
+      rating: 4.2,
+      numReviews: 8,
+      description: "Comfortable running shoes with good grip for all types of terrain."
+    }
   ],
 };
 export default data;

@@ -5,6 +5,7 @@ import '../index.css';
 import Product from '../components/Product';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Helmet } from 'react-helmet-async';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -40,6 +41,7 @@ function HomeScreen() {
   }, []);
   return (
     <div>
+    <Helmet><title>amazon</title></Helmet>
       <h1>Featured Products</h1>
       <div className="products">
         {loading ? (
