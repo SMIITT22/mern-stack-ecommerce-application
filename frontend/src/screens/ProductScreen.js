@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useReducer } from 'react';
+import { useContext, useEffect, useReducer } from 'react';
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
 import { useParams } from 'react-router-dom';
@@ -11,6 +11,7 @@ import Button from 'react-bootstrap/esm/Button';
 import { Helmet } from 'react-helmet-async';
 import MessageBox from '../components/MessageBox';
 import { getError } from '../utils';
+import { Store } from '../Store';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -33,7 +34,8 @@ function ProductScreen() {
   });
 
   const params = useParams();
-  const { slug } = params;
+  console.log("params", params) //will give (slug : "value")
+  const { slug } = params; //it means, const slug = params.slug
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,8 +52,16 @@ function ProductScreen() {
   }, [slug]);
 
 
+
+  const {state, dispatch: ctxDispatch} = useContext(Store); //by using context we have access to state
+
+  const addToCartHandler = () => {
+        ctxDispatch({type:'CART_ADD_ITEM', payload:{...product, quantity : 1}})
+  }
+
+
   return loading ? (
-    <div class="classic-7"> loading... </div>
+    <div class="classic-7"> </div>
   ) : error ? (
     <MessageBox variant="danger" name1="kaja">
       {error}
@@ -111,7 +121,7 @@ function ProductScreen() {
                 {product.countInStock > 0 && (
                   <ListGroup.Item>
                     <div className="d-grid">
-                      <Button variant="primary">Add to cart</Button>
+                      <Button onClick={addToCartHandler} variant="warning">Add to cart</Button>
                     </div>
                   </ListGroup.Item>
                 )}
