@@ -11,8 +11,10 @@ import { useContext } from 'react';
 import { Store } from './Store';
 
 function App() {
+  //this is for cart
   const { state } = useContext(Store);
   const { cart } = state;
+
   return (
     <BrowserRouter>
       <div className="d-flex flex-column site-container">
@@ -20,17 +22,18 @@ function App() {
           <Navbar bg="dark" variant="dark">
             <LinkContainer to="/">
               <Navbar.Brand>
-                <div style={{ padding: '1rem' }}>amazon</div>
+                <div style={{ padding: '1rem'}}>amazon</div>
               </Navbar.Brand>
             </LinkContainer>
             <Nav className="me-auto">
               <Link to="/Cart" className="nav-link">
-                Cart
+                <div className='cartName'>Cart
                 {cart.cartItems.length > 0 && (
                   <Badge pill bg="danger">
-                    {cart.cartItems.length}
+                    {cart.cartItems.reduce((a,c) => a + c.quantity, 0)}
                   </Badge>
                 )}
+                </div>
               </Link>
             </Nav>
           </Navbar>

@@ -64,3 +64,8 @@ padding: 1rem;
   animation:c7 2s infinite steps(11);
 }
 @keyframes c7 {to{background-position: left}}
+
+.cartName{
+  font-size: 1rem;
+  margin-top: 6%;
+}
