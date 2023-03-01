@@ -12,6 +12,8 @@ function reducer(state, action) {
   switch (action.type) {
     case 'CART_ADD_ITEM':
       const newItem = action.payload;
+      console.log("what is newItem?: ", newItem)
+      
       const existItem = state.cart.cartItems.find(
         (item) => item._id === newItem._id
       );

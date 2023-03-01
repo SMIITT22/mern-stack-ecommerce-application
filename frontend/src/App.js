@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import Badge from 'react-bootstrap/esm/Badge';
 import { useContext } from 'react';
 import { Store } from './Store';
+import CartScreen from './screens/CartScreen';
 
 function App() {
   //this is for cart
@@ -26,7 +27,7 @@ function App() {
               </Navbar.Brand>
             </LinkContainer>
             <Nav className="me-auto">
-              <Link to="/Cart" className="nav-link">
+              <Link to="/cart" className="nav-link">
                 <div className='cartName'>Cart
                 {cart.cartItems.length > 0 && (
                   <Badge pill bg="danger">
@@ -43,6 +44,8 @@ function App() {
             <Routes>
               <Route path="/" element={<HomeScreen />} />
               <Route path="/product/:slug" element={<ProductScreen />} />
+              <Route path="/cart" element={<CartScreen />} />
+
             </Routes>
           </Container>
         </main>

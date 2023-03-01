@@ -69,3 +69,8 @@ padding: 1rem;
   font-size: 1rem;
   margin-top: 6%;
 }
+
+.img-thumbnail{
+  height: 80px;
+}
+

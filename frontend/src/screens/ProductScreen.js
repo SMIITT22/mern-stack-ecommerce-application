@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useContext, useEffect, useReducer } from 'react';
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import Rating from '../components/Rating';
 import ListGroup from 'react-bootstrap/esm/ListGroup';
 import Badge from 'react-bootstrap/Badge';
@@ -27,6 +27,7 @@ const reducer = (state, action) => {
 };
 
 function ProductScreen() {
+  const navigate = useNavigate();
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
     product: [],
     loading: true,
@@ -34,7 +35,7 @@ function ProductScreen() {
   });
 
   const params = useParams();
-  console.log("params", params) //will give (slug : "value")
+  // console.log("params", params) //will give (slug : "value")
   const { slug } = params; //it means, const slug = params.slug
 
   useEffect(() => {
@@ -42,7 +43,6 @@ function ProductScreen() {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
         const result = await axios.get(`/api/products/slug/${slug}`);
-        console.log('result', result);
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
@@ -55,21 +55,24 @@ function ProductScreen() {
 
   const {state, dispatch: ctxDispatch} = useContext(Store); //by using context we have access to state
   const {cart} = state;
+
   const addToCartHandler = async () => {
-    console.log("ghasvcsc")
-        const existItem = cart.cartItems.find((x)=>x._id === product._id) ; 
-        const quantity = existItem ? existItem.quantity + 1 : 1 ;
+        const existItem = cart.cartItems.find((x)=>x._id === product._id);
+        console.log("for checking: ", {existItem}) //existItem returns an object. 
+        const quantity = existItem ? existItem.quantity + 1 : 1 ; //add quantity if it's already there otherwise it's 1;   
         const {data} = await axios.get(`/api/products/${product._id}`);
         if (data.countInStock < quantity){
           window.alert('Sorry Product is out of stock');
           return;
         }
         ctxDispatch({type:'CART_ADD_ITEM', payload:{...product, quantity}})
+
+        navigate('/cart') //so when we click on add to cart button inside of product screen then it redirects us to cart page.
   }   
 
 
   return loading ? (
-    <div class="classic-7"> loading... </div>
+    <div className ="classic-7"> loading... </div>
   ) : error ? (
     <MessageBox variant="danger">
       {error}

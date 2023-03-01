@@ -22,7 +22,7 @@ const reducer = (state, action) => {
 };
 
 function HomeScreen() {
-  const [{ loading, error, products }, dispatch] = useReducer(logger(reducer), {
+  const [{ loading, error, products }, dispatch] = useReducer(reducer, {
     products: [],
     loading: true,
     error: '',
@@ -50,7 +50,7 @@ function HomeScreen() {
       <div className="products">
         {loading ? (
           /* <div>laoding...</div> */
-          <div class="classic-7"> loading... </div>
+          <div className="classic-7"> loading... </div>
         ) : error ? (
           <MessageBox variant="danger" name1="kaja">
             {error}
