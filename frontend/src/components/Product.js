@@ -21,6 +21,8 @@ function Product(props) {
       window.alert('Sorry Product is out of stock');
       return;
     }
+    window.alert('you want to add item? press OK');
+
     ctxDispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
   };
 
