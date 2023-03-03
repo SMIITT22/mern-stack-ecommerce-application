@@ -1,4 +1,20 @@
+import bcrypt from 'bcryptjs';
+
 const data = {
+  users: [
+    {
+      name: 'Smit',
+      email: 'admin@example.com',
+      password: bcrypt.hashSync('123'),
+      isAdmin: true,
+    },
+    {
+      name: 'ashish',
+      email: 'user@example.com',
+      password: bcrypt.hashSync('123'),
+      isAdmin: false,
+    },
+  ],
   products: [
     {
       // _id: '1',
@@ -72,3 +88,4 @@ const data = {
 export default data;
 
 //id will be automatically assigned from the database.
+  
