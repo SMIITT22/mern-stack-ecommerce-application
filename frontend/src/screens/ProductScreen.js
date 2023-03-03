@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useContext, useEffect, useReducer } from 'react';
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Rating from '../components/Rating';
 import ListGroup from 'react-bootstrap/esm/ListGroup';
 import Badge from 'react-bootstrap/Badge';

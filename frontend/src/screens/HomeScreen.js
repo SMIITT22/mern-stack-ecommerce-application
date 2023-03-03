@@ -1,6 +1,5 @@
 import { useEffect, useReducer } from 'react';
 import axios from 'axios';
-import logger from 'use-reducer-logger';
 import '../index.css';
 import Product from '../components/Product';
 import Row from 'react-bootstrap/Row';
